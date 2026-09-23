@@ -1,0 +1,50 @@
+train_metrics1 = {
+    "mae": @tm.MeanAbsoluteError(),
+    "mse": @tm.MeanSquaredError(),
+    "rmse": @tm.RootMeanSquaredError(),
+    "r2": @tm.R2Score(),
+}
+valid_metrics1 = {
+    "fish_EC50": {
+        "mae": @tm.MeanAbsoluteError(),
+        "mse": @tm.MeanSquaredError(),
+        "rmse": @tm.RootMeanSquaredError(),
+            "r2": @tm.R2Score(),
+        "pearson": @tm.PearsonCorrCoef(),
+    },
+    "fish_EC10": {
+        "mae": @tm.MeanAbsoluteError(),
+        "mse": @tm.MeanSquaredError(),
+        "rmse": @tm.RootMeanSquaredError(),
+        "r2": @tm.R2Score(),
+        "pearson": @tm.PearsonCorrCoef(),
+    },
+    "aquatic_invertebrates_EC50": {
+        "mae": @tm.MeanAbsoluteError(),
+        "mse": @tm.MeanSquaredError(),
+        "rmse": @tm.RootMeanSquaredError(),
+        "r2": @tm.R2Score(),
+        "pearson": @tm.PearsonCorrCoef(),
+    },
+    "aquatic_invertebrates_EC10": {
+        "mae": @tm.MeanAbsoluteError(),
+        "mse": @tm.MeanSquaredError(),
+        "rmse": @tm.RootMeanSquaredError(),
+        "r2": @tm.R2Score(),
+        "pearson": @tm.PearsonCorrCoef(),
+    },
+    "algae_EC50": {
+        "mae": @tm.MeanAbsoluteError(),
+        "mse": @tm.MeanSquaredError(),
+        "rmse": @tm.RootMeanSquaredError(),
+        "r2": @tm.R2Score(),
+        "pearson": @tm.PearsonCorrCoef(),
+    },
+    "algae_EC10": {
+        "mae": @tm.MeanAbsoluteError(),
+        "mse": @tm.MeanSquaredError(),
+        "rmse": @tm.RootMeanSquaredError(),
+        "r2": @tm.R2Score(),
+        "pearson": @tm.PearsonCorrCoef(),
+    },
+}

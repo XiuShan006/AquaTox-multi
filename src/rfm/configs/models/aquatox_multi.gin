@@ -1,0 +1,4 @@
+include './src/rfm/configs/models/shared_core.gin'
+YieldTrainer.variant_name = 'aquatox_multi'
+YieldTrainer.lambda_ord = 0.05
+YieldGNN.regression_mode = 'heteroscedastic'

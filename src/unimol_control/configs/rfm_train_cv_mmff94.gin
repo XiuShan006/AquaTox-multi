@@ -1,0 +1,2 @@
+include './src/unimol_control/configs/rfm_train.gin'
+WandbLogger.mode = 'offline'

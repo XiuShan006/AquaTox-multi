@@ -1,0 +1,346 @@
+import featurizers
+import gin_config
+import models
+import trainer
+logger = @logger/gin.singleton()
+model = @YieldGNN()
+run_dir = \
+    './experiments/aquatox_multi/fold_4/attempt_001'
+train_datasets = \
+    {'algae_EC10': @build_train_dataset_algae_ec10/YieldDataset(),
+     'algae_EC50': @build_train_dataset_algae_ec50/YieldDataset(),
+     'aquatic_invertebrates_EC10': @build_train_dataset_aquatic_invertebrates_ec10/YieldDataset(),
+     'aquatic_invertebrates_EC50': @build_train_dataset_aquatic_invertebrates_ec50/YieldDataset(),
+     'fish_EC10': @build_train_dataset_fish_ec10/YieldDataset(),
+     'fish_EC50': @build_train_dataset_fish_ec50/YieldDataset()}
+train_metrics = %train_metrics1
+train_metrics1 = \
+    {'mae': @tm.MeanAbsoluteError(),
+     'mse': @tm.MeanSquaredError(),
+     'r2': @tm.R2Score(),
+     'rmse': @tm.RootMeanSquaredError()}
+valid_datasets = \
+    {'algae_EC10': @build_valid_dataset_algae_ec10/YieldDataset(),
+     'algae_EC50': @build_valid_dataset_algae_ec50/YieldDataset(),
+     'aquatic_invertebrates_EC10': @build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset(),
+     'aquatic_invertebrates_EC50': @build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset(),
+     'fish_EC10': @build_valid_dataset_fish_ec10/YieldDataset(),
+     'fish_EC50': @build_valid_dataset_fish_ec50/YieldDataset()}
+valid_metrics = %valid_metrics1
+valid_metrics1 = \
+    {'algae_EC10': {'mae': @tm.MeanAbsoluteError(),
+                    'mse': @tm.MeanSquaredError(),
+                    'pearson': @tm.PearsonCorrCoef(),
+                    'r2': @tm.R2Score(),
+                    'rmse': @tm.RootMeanSquaredError()},
+     'algae_EC50': {'mae': @tm.MeanAbsoluteError(),
+                    'mse': @tm.MeanSquaredError(),
+                    'pearson': @tm.PearsonCorrCoef(),
+                    'r2': @tm.R2Score(),
+                    'rmse': @tm.RootMeanSquaredError()},
+     'aquatic_invertebrates_EC10': {'mae': @tm.MeanAbsoluteError(),
+                                    'mse': @tm.MeanSquaredError(),
+                                    'pearson': @tm.PearsonCorrCoef(),
+                                    'r2': @tm.R2Score(),
+                                    'rmse': @tm.RootMeanSquaredError()},
+     'aquatic_invertebrates_EC50': {'mae': @tm.MeanAbsoluteError(),
+                                    'mse': @tm.MeanSquaredError(),
+                                    'pearson': @tm.PearsonCorrCoef(),
+                                    'r2': @tm.R2Score(),
+                                    'rmse': @tm.RootMeanSquaredError()},
+     'fish_EC10': {'mae': @tm.MeanAbsoluteError(),
+                   'mse': @tm.MeanSquaredError(),
+                   'pearson': @tm.PearsonCorrCoef(),
+                   'r2': @tm.R2Score(),
+                   'rmse': @tm.RootMeanSquaredError()},
+     'fish_EC50': {'mae': @tm.MeanAbsoluteError(),
+                   'mse': @tm.MeanSquaredError(),
+                   'pearson': @tm.PearsonCorrCoef(),
+                   'r2': @tm.R2Score(),
+                   'rmse': @tm.RootMeanSquaredError()}}
+logdir/get_str.format = '{}/{}'
+logdir/get_str.values = [%run_dir, 'logs']
+logger/LocalFileLogger.logdir = @logdir/get_str()
+train_metrics1/MeanAbsoluteError.num_outputs = 1
+valid_metrics1/MeanAbsoluteError.num_outputs = 1
+train_metrics1/MeanSquaredError.num_outputs = 1
+train_metrics1/MeanSquaredError.squared = True
+valid_metrics1/MeanSquaredError.num_outputs = 1
+valid_metrics1/MeanSquaredError.squared = True
+OptimizerBase.cls_name = 'Adam'
+OptimizerBase.lr = 0.0002
+OptimizerBase.weight_decay = 1e-05
+valid_metrics1/PearsonCorrCoef.num_outputs = 1
+train_metrics1/R2Score.adjusted = 0
+train_metrics1/R2Score.multioutput = 'uniform_average'
+valid_metrics1/R2Score.adjusted = 0
+valid_metrics1/R2Score.multioutput = 'uniform_average'
+logger/singleton.constructor = @LocalFileLogger
+build_train_dataset_algae_ec10/YieldDataset.contrastive = False
+build_train_dataset_algae_ec10/YieldDataset.cv_protocol = 'scaffold'
+build_train_dataset_algae_ec10/YieldDataset.dataset_layer = 'common_intersection'
+build_train_dataset_algae_ec10/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_train_dataset_algae_ec10/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_train_dataset_algae_ec10/YieldDataset.outer_fold_id = 4
+build_train_dataset_algae_ec10/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_train_dataset_algae_ec10/YieldDataset.sep = ','
+build_train_dataset_algae_ec10/YieldDataset.split_role = 'outer_train'
+build_train_dataset_algae_ec10/YieldDataset.task = 'algae_EC10'
+build_train_dataset_algae_ec10/YieldDataset.unknown_token = '<UNK>'
+build_train_dataset_algae_ec50/YieldDataset.contrastive = False
+build_train_dataset_algae_ec50/YieldDataset.cv_protocol = 'scaffold'
+build_train_dataset_algae_ec50/YieldDataset.dataset_layer = 'common_intersection'
+build_train_dataset_algae_ec50/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_train_dataset_algae_ec50/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_train_dataset_algae_ec50/YieldDataset.outer_fold_id = 4
+build_train_dataset_algae_ec50/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_train_dataset_algae_ec50/YieldDataset.sep = ','
+build_train_dataset_algae_ec50/YieldDataset.split_role = 'outer_train'
+build_train_dataset_algae_ec50/YieldDataset.task = 'algae_EC50'
+build_train_dataset_algae_ec50/YieldDataset.unknown_token = '<UNK>'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.contrastive = False
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.cv_protocol = \
+    'scaffold'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.dataset_layer = \
+    'common_intersection'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.outer_fold_id = 4
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.sep = ','
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.split_role = \
+    'outer_train'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.task = \
+    'aquatic_invertebrates_EC10'
+build_train_dataset_aquatic_invertebrates_ec10/YieldDataset.unknown_token = '<UNK>'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.contrastive = False
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.cv_protocol = \
+    'scaffold'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.dataset_layer = \
+    'common_intersection'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.outer_fold_id = 4
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.sep = ','
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.split_role = \
+    'outer_train'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.task = \
+    'aquatic_invertebrates_EC50'
+build_train_dataset_aquatic_invertebrates_ec50/YieldDataset.unknown_token = '<UNK>'
+build_train_dataset_fish_ec10/YieldDataset.contrastive = False
+build_train_dataset_fish_ec10/YieldDataset.cv_protocol = 'scaffold'
+build_train_dataset_fish_ec10/YieldDataset.dataset_layer = 'common_intersection'
+build_train_dataset_fish_ec10/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_train_dataset_fish_ec10/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_train_dataset_fish_ec10/YieldDataset.outer_fold_id = 4
+build_train_dataset_fish_ec10/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_train_dataset_fish_ec10/YieldDataset.sep = ','
+build_train_dataset_fish_ec10/YieldDataset.split_role = 'outer_train'
+build_train_dataset_fish_ec10/YieldDataset.task = 'fish_EC10'
+build_train_dataset_fish_ec10/YieldDataset.unknown_token = '<UNK>'
+build_train_dataset_fish_ec50/YieldDataset.contrastive = False
+build_train_dataset_fish_ec50/YieldDataset.cv_protocol = 'scaffold'
+build_train_dataset_fish_ec50/YieldDataset.dataset_layer = 'common_intersection'
+build_train_dataset_fish_ec50/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_train_dataset_fish_ec50/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_train_dataset_fish_ec50/YieldDataset.outer_fold_id = 4
+build_train_dataset_fish_ec50/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_train_dataset_fish_ec50/YieldDataset.sep = ','
+build_train_dataset_fish_ec50/YieldDataset.split_role = 'outer_train'
+build_train_dataset_fish_ec50/YieldDataset.task = 'fish_EC50'
+build_train_dataset_fish_ec50/YieldDataset.unknown_token = '<UNK>'
+build_valid_dataset_algae_ec10/YieldDataset.contrastive = False
+build_valid_dataset_algae_ec10/YieldDataset.cv_protocol = 'scaffold'
+build_valid_dataset_algae_ec10/YieldDataset.dataset_layer = 'common_intersection'
+build_valid_dataset_algae_ec10/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_valid_dataset_algae_ec10/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_valid_dataset_algae_ec10/YieldDataset.outer_fold_id = 4
+build_valid_dataset_algae_ec10/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_valid_dataset_algae_ec10/YieldDataset.sep = ','
+build_valid_dataset_algae_ec10/YieldDataset.split_role = 'inner_val'
+build_valid_dataset_algae_ec10/YieldDataset.task = 'algae_EC10'
+build_valid_dataset_algae_ec10/YieldDataset.unknown_token = '<UNK>'
+build_valid_dataset_algae_ec50/YieldDataset.contrastive = False
+build_valid_dataset_algae_ec50/YieldDataset.cv_protocol = 'scaffold'
+build_valid_dataset_algae_ec50/YieldDataset.dataset_layer = 'common_intersection'
+build_valid_dataset_algae_ec50/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_valid_dataset_algae_ec50/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_valid_dataset_algae_ec50/YieldDataset.outer_fold_id = 4
+build_valid_dataset_algae_ec50/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_valid_dataset_algae_ec50/YieldDataset.sep = ','
+build_valid_dataset_algae_ec50/YieldDataset.split_role = 'inner_val'
+build_valid_dataset_algae_ec50/YieldDataset.task = 'algae_EC50'
+build_valid_dataset_algae_ec50/YieldDataset.unknown_token = '<UNK>'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.contrastive = False
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.cv_protocol = \
+    'scaffold'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.dataset_layer = \
+    'common_intersection'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.outer_fold_id = 4
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.sep = ','
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.split_role = \
+    'inner_val'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.task = \
+    'aquatic_invertebrates_EC10'
+build_valid_dataset_aquatic_invertebrates_ec10/YieldDataset.unknown_token = '<UNK>'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.contrastive = False
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.cv_protocol = \
+    'scaffold'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.dataset_layer = \
+    'common_intersection'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.outer_fold_id = 4
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.sep = ','
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.split_role = \
+    'inner_val'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.task = \
+    'aquatic_invertebrates_EC50'
+build_valid_dataset_aquatic_invertebrates_ec50/YieldDataset.unknown_token = '<UNK>'
+build_valid_dataset_fish_ec10/YieldDataset.contrastive = False
+build_valid_dataset_fish_ec10/YieldDataset.cv_protocol = 'scaffold'
+build_valid_dataset_fish_ec10/YieldDataset.dataset_layer = 'common_intersection'
+build_valid_dataset_fish_ec10/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_valid_dataset_fish_ec10/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_valid_dataset_fish_ec10/YieldDataset.outer_fold_id = 4
+build_valid_dataset_fish_ec10/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_valid_dataset_fish_ec10/YieldDataset.sep = ','
+build_valid_dataset_fish_ec10/YieldDataset.split_role = 'inner_val'
+build_valid_dataset_fish_ec10/YieldDataset.task = 'fish_EC10'
+build_valid_dataset_fish_ec10/YieldDataset.unknown_token = '<UNK>'
+build_valid_dataset_fish_ec50/YieldDataset.contrastive = False
+build_valid_dataset_fish_ec50/YieldDataset.cv_protocol = 'scaffold'
+build_valid_dataset_fish_ec50/YieldDataset.dataset_layer = 'common_intersection'
+build_valid_dataset_fish_ec50/YieldDataset.file_path = \
+    './data/aquatox/data/common_intersection_model.csv'
+build_valid_dataset_fish_ec50/YieldDataset.manifest_path = \
+    './data/aquatox/manifests/cv_roles.csv.gz'
+build_valid_dataset_fish_ec50/YieldDataset.outer_fold_id = 4
+build_valid_dataset_fish_ec50/YieldDataset.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+build_valid_dataset_fish_ec50/YieldDataset.sep = ','
+build_valid_dataset_fish_ec50/YieldDataset.split_role = 'inner_val'
+build_valid_dataset_fish_ec50/YieldDataset.task = 'fish_EC50'
+build_valid_dataset_fish_ec50/YieldDataset.unknown_token = '<UNK>'
+model/YieldGNN.attention_dropout = 0.1
+model/YieldGNN.checkpoint_path = None
+model/YieldGNN.concat_type = 'simple'
+model/YieldGNN.constant_effect_tasks = None
+model/YieldGNN.dropout = 0.2
+model/YieldGNN.edge_in_dim = 13
+model/YieldGNN.expert_dim = 256
+model/YieldGNN.fp_dim = 1214
+model/YieldGNN.fusion_mode = 'direct'
+model/YieldGNN.gnn_type = 'our_gine'
+model/YieldGNN.hidden_dim = 256
+model/YieldGNN.initialization_seed = 20260829
+model/YieldGNN.jk_mode = 'last'
+model/YieldGNN.max_log_sigma = 2.0
+model/YieldGNN.message_dropout = 0.0
+model/YieldGNN.min_log_sigma = -0.5
+model/YieldGNN.mlp_dropout = 0.4
+model/YieldGNN.modality_dropout = 0.0
+model/YieldGNN.node_in_dim = 81
+model/YieldGNN.num_attention_heads = 4
+model/YieldGNN.num_effects = 7
+model/YieldGNN.num_experts = 6
+model/YieldGNN.num_layers = 4
+model/YieldGNN.pooling_mode = 'gated'
+model/YieldGNN.regression_mode = 'heteroscedastic'
+model/YieldGNN.sigma_parameterization = 'clamp'
+model/YieldGNN.tasks = \
+    ['fish_EC50',
+     'fish_EC10',
+     'aquatic_invertebrates_EC50',
+     'aquatic_invertebrates_EC10',
+     'algae_EC50',
+     'algae_EC10']
+model/YieldGNN.train_eps = False
+model/YieldGNN.use_attention = True
+YieldTrainer.best_metric = 'avg_rmse'
+YieldTrainer.checkpoint_best = True
+YieldTrainer.device = 'auto'
+YieldTrainer.gradient_clipping_norm = 5.0
+YieldTrainer.gradient_diagnostics_every_n_epochs = 2
+YieldTrainer.huber_beta = 1.0
+YieldTrainer.lambda_cls = 0.1
+YieldTrainer.lambda_mu = 0.5
+YieldTrainer.lambda_ord = 0.05
+YieldTrainer.lambda_reg = 0.0
+YieldTrainer.log_train_every_n_batches = 10
+YieldTrainer.logger = %logger
+YieldTrainer.metric_direction = 'min'
+YieldTrainer.min_lr = 1e-06
+YieldTrainer.model = %model
+YieldTrainer.molecular_sampling_temperature = 2.0
+YieldTrainer.n_epochs = 100
+YieldTrainer.n_steps_per_epoch = 13
+YieldTrainer.num_workers = 4
+YieldTrainer.optimizer = @OptimizerBase()
+YieldTrainer.ordering_start_fraction = 0.0
+YieldTrainer.patience = 12
+YieldTrainer.preprocessed_dir = \
+    './preprocessed_graphs_local/aquatox'
+YieldTrainer.run_dir = %run_dir
+YieldTrainer.sampling_temperature = 2.0
+YieldTrainer.scheduler_mode = 'step'
+YieldTrainer.seed = 20260829
+YieldTrainer.swa_lr = 1e-05
+YieldTrainer.tasks = \
+    ['fish_EC50',
+     'fish_EC10',
+     'aquatic_invertebrates_EC50',
+     'aquatic_invertebrates_EC10',
+     'algae_EC50',
+     'algae_EC10']
+YieldTrainer.test_datasets = {}
+YieldTrainer.train_batch_size = 512
+YieldTrainer.train_datasets = %train_datasets
+YieldTrainer.train_metrics = %train_metrics
+YieldTrainer.use_pcgrad = False
+YieldTrainer.use_swa = False
+YieldTrainer.valid_batch_size = 1024
+YieldTrainer.valid_datasets = %valid_datasets
+YieldTrainer.valid_every_n_epochs = 2
+YieldTrainer.valid_metrics = %valid_metrics
+YieldTrainer.variant_name = 'aquatox_multi'
+YieldTrainer.warmup_epochs = 5
+YieldTrainer.warmup_fraction = 0.05

@@ -1,0 +1,5 @@
+include './src/unimol_control/configs/rfm_train_cv_mmff94.gin'
+YieldTrainer.validation_granularity = 'sample'
+YieldTrainer.best_metric = 'avg_rmse'
+YieldTrainer.metric_direction = 'min'
+YieldTrainer.variant_name = 'unimol'

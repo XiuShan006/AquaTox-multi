@@ -1,0 +1,239 @@
+{
+  "checks": [
+    "Verified 5710 frozen output hashes",
+    "Verified immutable source provenance and inherited preprocessing limitations",
+    "Verified 142 checksum-valid Excel-date CAS recoveries",
+    "Verified identical 45,644-sample universe for both outer protocols",
+    "Verified molecule, parent, Murcko-scaffold, and acyclic-cluster disjointness",
+    "Verified common_intersection inherits both curated_full fold IDs",
+    "Verified protocol-specific inner validation and outer-test isolation",
+    "Verified all task × protocol × layer fold-balance thresholds",
+    "Verified common_intersection representation-support contract",
+    "Verified downstream model exports and aquatic-invertebrate terminology"
+  ],
+  "common_molecule_count": 5684,
+  "common_sample_count": 36900,
+  "fold_balance": [
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2001654259718776,
+      "molecule_share_min": 0.1997518610421836,
+      "protocol": "molecule",
+      "sample_share_max": 0.2004258717061485,
+      "sample_share_min": 0.1993611924407772,
+      "task": "algae_EC10"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2002412545235223,
+      "molecule_share_min": 0.1998391636509851,
+      "protocol": "molecule",
+      "sample_share_max": 0.2003891050583657,
+      "sample_share_min": 0.1996595330739299,
+      "task": "algae_EC50"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2004405286343612,
+      "molecule_share_min": 0.1995594713656387,
+      "protocol": "molecule",
+      "sample_share_max": 0.2007162346521146,
+      "sample_share_min": 0.1995225102319236,
+      "task": "aquatic_invertebrates_EC10"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2001256676091737,
+      "molecule_share_min": 0.1998114985862394,
+      "protocol": "molecule",
+      "sample_share_max": 0.2001233045622688,
+      "sample_share_min": 0.1996300863131936,
+      "task": "aquatic_invertebrates_EC50"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2002916869227029,
+      "molecule_share_min": 0.1998055420515313,
+      "protocol": "molecule",
+      "sample_share_max": 0.200420673076923,
+      "sample_share_min": 0.1995192307692307,
+      "task": "fish_EC10"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2001287001287001,
+      "molecule_share_min": 0.1998069498069498,
+      "protocol": "molecule",
+      "sample_share_max": 0.2004523271039162,
+      "sample_share_min": 0.1996190929651232,
+      "task": "fish_EC50"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2002902757619738,
+      "molecule_share_min": 0.1995645863570392,
+      "protocol": "molecule",
+      "sample_share_max": 0.2004836227742361,
+      "sample_share_min": 0.1993844801055177,
+      "task": "algae_EC10"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2001406964474147,
+      "molecule_share_min": 0.1997889553288779,
+      "protocol": "molecule",
+      "sample_share_max": 0.2004374627162457,
+      "sample_share_min": 0.1996420759594352,
+      "task": "algae_EC50"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2002266717038156,
+      "molecule_share_min": 0.1998488855307895,
+      "protocol": "molecule",
+      "sample_share_max": 0.2003882956594092,
+      "sample_share_min": 0.1996949105533213,
+      "task": "aquatic_invertebrates_EC10"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2002138465650895,
+      "molecule_share_min": 0.1999465383587276,
+      "protocol": "molecule",
+      "sample_share_max": 0.2002333949236604,
+      "sample_share_min": 0.1998444033842264,
+      "task": "aquatic_invertebrates_EC50"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2003446790176648,
+      "molecule_share_min": 0.1994829814735028,
+      "protocol": "molecule",
+      "sample_share_max": 0.2008613470510826,
+      "sample_share_min": 0.1994257686326115,
+      "task": "fish_EC10"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2002259248799774,
+      "molecule_share_min": 0.1999435187800056,
+      "protocol": "molecule",
+      "sample_share_max": 0.2003329090375012,
+      "sample_share_min": 0.1997454225007343,
+      "task": "fish_EC50"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2154673283705541,
+      "molecule_share_min": 0.195616211745244,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2225179664626031,
+      "sample_share_min": 0.1937716262975778,
+      "task": "algae_EC10"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2589465219139525,
+      "molecule_share_min": 0.1845597104945717,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2898832684824903,
+      "sample_share_min": 0.1770428015564202,
+      "task": "algae_EC50"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2070484581497797,
+      "molecule_share_min": 0.198237885462555,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2203274215552524,
+      "sample_share_min": 0.194406548431105,
+      "task": "aquatic_invertebrates_EC10"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2434809927741124,
+      "molecule_share_min": 0.1891297518064718,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2639950678175092,
+      "sample_share_min": 0.1837237977805178,
+      "task": "aquatic_invertebrates_EC50"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2095284394749635,
+      "molecule_share_min": 0.1973748176956733,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2193509615384615,
+      "sample_share_min": 0.1948617788461538,
+      "task": "fish_EC10"
+    },
+    {
+      "layer": "common_intersection",
+      "molecule_share_max": 0.2567567567567567,
+      "molecule_share_min": 0.1856499356499356,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2754433995952863,
+      "sample_share_min": 0.1806927746696821,
+      "task": "fish_EC50"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2006531204644412,
+      "molecule_share_min": 0.1995645863570392,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2026819081116729,
+      "sample_share_min": 0.1941085952956693,
+      "task": "algae_EC10"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.231445655997186,
+      "molecule_share_min": 0.1916989096025325,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2406044939351759,
+      "sample_share_min": 0.1891032014316961,
+      "task": "algae_EC50"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2021156025689459,
+      "molecule_share_min": 0.1938043067623725,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2028844820413257,
+      "sample_share_min": 0.1908195811953959,
+      "task": "aquatic_invertebrates_EC10"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2141138732959102,
+      "molecule_share_min": 0.1962042234696605,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2129728678401244,
+      "sample_share_min": 0.1965379752990372,
+      "task": "aquatic_invertebrates_EC50"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2007755277897458,
+      "molecule_share_min": 0.1973287376130978,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2044502930972604,
+      "sample_share_min": 0.1859074051920086,
+      "task": "fish_EC10"
+    },
+    {
+      "layer": "curated_full",
+      "molecule_share_max": 0.2310081897768992,
+      "molecule_share_min": 0.1920361479807963,
+      "protocol": "scaffold",
+      "sample_share_max": 0.2307842945265837,
+      "sample_share_min": 0.1920101830999706,
+      "task": "fish_EC50"
+    }
+  ],
+  "molecule_count": 6504,
+  "output_dir": "data/aquatox",
+  "sample_count": 45644,
+  "status": "passed",
+  "warnings": []
+}

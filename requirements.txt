@@ -1,0 +1,27 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+--find-links https://data.dgl.ai/wheels/torch-2.3/cu118/repo.html
+--find-links https://data.pyg.org/whl/torch-2.3.0+cu118.html
+
+torch==2.3.0+cu118
+torchvision==0.18.0+cu118
+dgl==2.4.0+cu118
+torch-geometric==2.4.0
+dgllife==0.3.2
+torchmetrics==1.6.0
+torchtyping==0.1.5
+
+rdkit==2023.9.1
+numpy==1.25.2
+pandas==1.5.3
+scikit-learn==1.6.0
+scipy==1.14.1
+
+gin-config==0.5.0
+wandb==0.19.1
+joblib==1.4.2
+tqdm==4.67.1
+
+# The Uni-Mol control also requires Uni-Core 0.0.1 at commit
+# 5eebc0b9b35c17e7617e389898e88404fb0154b9. It must be built from
+# source after PyTorch is installed; see README.md.
+

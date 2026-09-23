@@ -1,0 +1,39 @@
+import gin_config
+import featurizers
+import models
+import trainer
+include './src/unimol_control/configs/loggers/wandb.gin'
+include './src/unimol_control/configs/models/toxic_unimol.gin'
+include './src/unimol_control/configs/datasets/aquatox_scaffold.gin'
+include './src/unimol_control/configs/metrics/essential.gin'
+user_root_dir = 'experiments'
+run_dir = @run_dir/get_str()
+run_dir/get_str.format = '{}/{}'
+run_dir/get_str.values = [%user_root_dir, %run_name]
+OptimizerBase.cls_name = 'Adam'
+OptimizerBase.lr = 1e-5
+train_metrics = %train_metrics1
+valid_metrics = %valid_metrics1
+YieldTrainer.preprocessed_dir = 'preprocessed_graphs_local/aquatox'
+YieldTrainer.tasks = ['fish_EC50', 'fish_EC10', 'aquatic_invertebrates_EC50', 'aquatic_invertebrates_EC10', 'algae_EC50', 'algae_EC10']
+YieldTrainer.run_dir = %run_dir
+YieldTrainer.train_datasets = %train_datasets
+YieldTrainer.valid_datasets = %valid_datasets
+YieldTrainer.train_batch_size = 64
+YieldTrainer.valid_batch_size = 128
+YieldTrainer.num_workers = 8
+YieldTrainer.valid_metrics = %valid_metrics
+YieldTrainer.train_metrics = %train_metrics
+YieldTrainer.model = %model
+YieldTrainer.optimizer = @OptimizerBase()
+YieldTrainer.n_epochs = 100
+YieldTrainer.logger = %logger
+YieldTrainer.device = 'auto'
+YieldTrainer.checkpoint_best = True
+YieldTrainer.best_metric = 'avg_r2'
+YieldTrainer.metric_direction = 'max'
+YieldTrainer.patience = 20
+YieldTrainer.lambda_cls = 0.1
+YieldTrainer.lambda_ord = 0.05
+YieldTrainer.lambda_reg = 0.0
+YieldTrainer.valid_every_n_epochs = 3

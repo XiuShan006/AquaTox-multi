@@ -1,0 +1,28 @@
+ToxicGNN.tasks = ['fish_EC50', 'fish_EC10', 'aquatic_invertebrates_EC50', 'aquatic_invertebrates_EC10', 'algae_EC50', 'algae_EC10']
+ToxicGNN.num_effects = 7
+ToxicGNN.hidden_dim = 256
+ToxicGNN.dropout = 0.2
+ToxicGNN.num_experts = 6
+ToxicGNN.expert_dim = 256
+ToxicGNN.unimol_ckpt_path = 'weights/mol_pre_no_h_220816.pt'
+ToxicGNN.freeze_unimol = False
+ToxicGNN.unimol_random_seed = 42
+ToxicGNN.unimol_mmff_variant = 'MMFF94'
+ToxicGNN.unimol_mmff_max_iters = 1000
+ToxicGNN.unimol_use_uff_fallback = True
+ToxicGNN.unimol_uff_max_iters = 1000
+ToxicGNN.unimol_molecule_timeout_seconds = 60.0
+ToxicGNN.unimol_args = {
+  'unimol_encoder_layers': 15,
+  'unimol_encoder_embed_dim': 512,
+  'unimol_encoder_ffn_embed_dim': 2048,
+  'unimol_encoder_attention_heads': 64,
+  'unimol_activation_fn': 'gelu',
+  'unimol_dropout': 0.1,
+  'unimol_emb_dropout': 0.1,
+  'unimol_attention_dropout': 0.1,
+  'unimol_activation_dropout': 0.0,
+  'unimol_max_seq_len': 512,
+  'unimol_delta_pair_repr_norm_loss': -1.0
+}
+model = @ToxicGNN()

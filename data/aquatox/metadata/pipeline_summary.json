@@ -1,0 +1,32 @@
+{
+  "assignment_quality": {
+    "molecule": {
+      "lower_share_violation": 0.0,
+      "max_share_deviation": 0.0008613470510826504,
+      "ratio_violation": 0.0,
+      "sse": 1.0200992608225205e-05
+    },
+    "scaffold": {
+      "lower_share_violation": 0.0,
+      "max_share_deviation": 0.08988326848249029,
+      "ratio_violation": 0.0,
+      "sse": 0.0462610304980897
+    }
+  },
+  "common_intersection_definition": "fusion_supported AND smiles_transformer_supported AND conformer_status == success",
+  "cross_source_signature_group_count": 1664,
+  "cross_source_signature_row_count": 3440,
+  "repeated_signature_group_count": 4537,
+  "repeated_signature_row_count": 9481,
+  "scaffold_statistics": {
+    "acyclic_cluster_count": 1485,
+    "acyclic_fraction": 0.38511174063581993,
+    "acyclic_parent_count": 2447,
+    "acyclic_singleton_clusters": 1192,
+    "largest_acyclic_cluster": 52,
+    "nonempty_scaffold_count": 1240,
+    "parent_count": 6354
+  },
+  "structure_parse_failure_count": 1,
+  "structure_parse_failure_rows": 2
+}

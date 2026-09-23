@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "variant_name": "aquatox_multi",
+  "outer_fold_id": 3,
+  "seed": 20260828,
+  "selected_epoch": 28,
+  "checkpoint": "best_model.pt",
+  "checkpoint_sha256": "00f9ef71d4c21fb0acb83c897928afa4de3c539f046db48f7ce6413890669c52",
+  "dataset": "data/aquatox/data/common_intersection_model.csv",
+  "cv_roles": "data/aquatox/manifests/cv_roles.csv.gz"
+}
