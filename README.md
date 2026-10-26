@@ -50,10 +50,22 @@ tutorials/predict.ipynb New-molecule prediction tutorial
 weights/                External Uni-Mol weight instructions
 ```
 
-## Citation / License
+## Citing
 
-If you use this repository, please cite:
+If you are using this resource please cite our
+[paper](https://pubs.acs.org/doi/10.1021/acs.jcim.6c02487)
 
-> Xiushan Wu, Baochuan Hu, Dongliang Chen, Jinrong Yang, and Xiao He. *A Unified Multi-Task Model for Aquatic Toxicity Prediction across Organism Groups and Effect Endpoints: A Comparison of Molecular Representations*.
+```latex
+  @article{wu2026unified,
+    title={Unified Multitask Model for Aquatic Toxicity Prediction across Organism Groups and Effect End Points: A Comparison of Molecular Representations},
+    author={Xiushan Wu and Baochuan Hu and Dongliang Chen and Jinrong Yang and Xiao He},
+    journal={Journal of Chemical Information and Modeling},
+    year={2026},
+    doi={10.1021/acs.jcim.6c02487},
+    href={https://pubs.acs.org/doi/10.1021/acs.jcim.6c02487},
+}
+```
+
+## License
 
 Project-authored code and documentation are released under the [MIT License](LICENSE). Adapted third-party components and notices are listed in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) and [`licenses/`](licenses/).
